@@ -1,0 +1,116 @@
+---
+title: Culture
+description: Les champs, le Jardin de la Main et l’histoire des lieux de culture de Rage de Vert.
+---
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Nos champs</p>
+    <h1>Qu’ils sont beaux!</h1>
+    <p>Rage de Vert est née dans les friches de l’agglomération neuchâteloise. Aujourd’hui, les cultures principales se trouvent à Thielle-Wavre, avec le Jardin de la Main comme lieu de distribution à Neuchâtel.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-column culture-intro">
+    <div class="culture-copy">
+      <p class="eyebrow">Histoire</p>
+      <h2>Du Jardin de la Main à Thielle</h2>
+      <p>À sa création, Rage de Vert se voulait une association d’agriculture urbaine de proximité, mettant en valeur des surfaces en friche de l’agglomération neuchâteloise.</p>
+      <p>Et c’est bien comme cela que tout a commencé: avec <strong>un magnifique jardin à la rue de la Main</strong>, à Neuchâtel, qui reste aujourd’hui un lieu important de distribution des légumes.</p>
+      <p>Depuis l’hiver 2015-2016, la totalité des activités agricoles a déménagé à Thielle-Wavre, tout en gardant le Jardin de la Main comme point d’ancrage en ville.</p>
+    </div>
+
+    <figure class="culture-photo">
+      <%= local_image_tag 'culture/champs-rage-de-vert.webp', alt: 'Champs cultivés par Rage de Vert à Thielle-Wavre', loading: 'lazy' %>
+    </figure>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Historique</p>
+      <h2>De la friche urbaine au champ agricole</h2>
+      <p>Rage de Vert a grandi par étapes, en suivant les terrains disponibles et les rencontres qui rendaient le projet possible.</p>
+    </div>
+
+    <ol class="culture-timeline split-detail-list">
+      <li>
+        <span class="timeline-kicker">Départ</span>
+        <div>
+          <h3>Jardin de la Main</h3>
+          <p>Un jardin en ville, à la rue de la Main, pour lancer une agriculture de proximité ancrée à Neuchâtel.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-kicker">2010</span>
+        <div>
+          <h3>Pierre-à-Bot</h3>
+          <p>Les premières cultures proprement dites commencent sur un terrain en friche prêté par la Ville de Neuchâtel.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-kicker">Ensuite</span>
+        <div>
+          <h3>Serrières</h3>
+          <p>Une deuxième friche, prêtée par Philip Morris sous la rue du Clos-de-Serrières, rejoint le projet.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-kicker">2015</span>
+        <div>
+          <h3>Thielle</h3>
+          <p>Avec la perte probable du terrain de Serrières, l’association saisit l’occasion d’exploiter une vraie surface agricole à Closel-Bourbon.</p>
+        </div>
+      </li>
+      <li>
+        <span class="timeline-kicker">2015-2016</span>
+        <div>
+          <h3>Déménagement</h3>
+          <p>Les contacts avec Martin Ott, le domaine du Grand Montmirail, la communauté Don Camillo et Perspective Plus ouvrent l’accès à Closel-Bourbon.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Aujourd’hui</p>
+      <h2>Deux lieux complémentaires</h2>
+      <p>Les champs et le jardin ne jouent pas le même rôle, mais les deux restent essentiels à la vie de l’association.</p>
+    </div>
+
+    <div class="culture-place-grid">
+      <article class="culture-place-card">
+        <p class="eyebrow">Thielle-Wavre</p>
+        <h3>Les champs</h3>
+        <p>La production principale se fait à Closel-Bourbon: cultures, récoltes, préparation des paniers, demi-journées d’aide et mini marché.</p>
+        <%= link_to 'Voir l’accès aux champs', '/contact/#acces', class: 'text-action-link' %>
+      </article>
+
+      <article class="culture-place-card">
+        <p class="eyebrow">Neuchâtel</p>
+        <h3>Le Jardin de la Main</h3>
+        <p>Le Jardin de la Main reste le lieu de distribution historique en ville, un point de rencontre et un petit potager où flâner.</p>
+        <%= link_to 'Voir les options de distribution', '/paniers/#distribution', class: 'text-action-link' %>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container culture-portrait">
+    <div>
+      <p class="eyebrow">Pour aller plus loin</p>
+      <h2>Un portrait analytique de Rage de Vert</h2>
+      <p>Des chercheuses d’Agridea et du FiBL ont réalisé en 2020 un descriptif analytique exhaustif de l’association, de son fonctionnement et de son modèle agricole.</p>
+    </div>
+
+    <div class="button-row">
+      <%= link_to 'Lire le portrait 2020', '/s/ragdevert-portrait-agridea-fibl.pdf', class: 'button' %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,138 @@
+---
+title: Budget
+description: "Le beurre dans les épinards: transparence sur le budget, les charges et les salaires à Rage de Vert."
+---
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Budget</p>
+    <h1>Le beurre et les épinards</h1>
+    <p>Parler d’argent n’est pas toujours confortable, mais c’est utile: le prix d’un panier dit aussi comment on rémunère le travail agricole qui le rend possible.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-column budget-overview">
+    <div class="budget-copy">
+      <p class="eyebrow">Budget associatif</p>
+      <h2>Ce que finance un abonnement</h2>
+      <p>À Rage de Vert, il y a de belles rencontres, une authentique bienveillance mutuelle, un échange concret de légumes contre des coups de main… et une somme, disons, « appréciable ».</p>
+      <p>Voici quelques chiffres arrondis pour comprendre ce que finance l’abonnement. Rage de Vert, c’est un <strong>budget annuel de 220’000 CHF</strong>, dont <strong>150’000 CHF de charges de personnel</strong>: salaires et assurances sociales de l’équipe maraîchère.</p>
+      <p>Autrement dit, environ deux tiers de ce que les membres paient pour leur abonnement sert directement à rétribuer le travail aux champs.</p>
+    </div>
+
+    <aside class="budget-panel budget-snapshot" aria-labelledby="budget-snapshot-title">
+      <h2 id="budget-snapshot-title">En chiffres</h2>
+      <dl class="budget-stat-list">
+        <div>
+          <dt>Budget annuel</dt>
+          <dd>220’000 CHF</dd>
+        </div>
+        <div>
+          <dt>Personnel</dt>
+          <dd>150’000 CHF</dd>
+        </div>
+        <div>
+          <dt>Part de l’abonnement</dt>
+          <dd>≈ deux tiers pour les salaires</dd>
+        </div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Répartition</p>
+      <h2>Les grands postes du budget</h2>
+      <p>Les montants ci-dessous sont arrondis. Ils donnent un ordre de grandeur plutôt qu’une comptabilité détaillée.</p>
+    </div>
+
+    <dl class="budget-breakdown split-detail-list">
+      <div>
+        <dt>Personnel</dt>
+        <dd><strong>150’000 CHF</strong><span>Salaires et assurances sociales.</span></dd>
+      </div>
+      <div>
+        <dt>Cultures</dt>
+        <dd><strong>25’000 CHF</strong><span>Semences, plantons, fumier et fournitures.</span></dd>
+      </div>
+      <div>
+        <dt>Loyers</dt>
+        <dd><strong>12’000 CHF</strong><span>Terrain, entrepôt et Jardin de la Main.</span></dd>
+      </div>
+      <div>
+        <dt>Matériel</dt>
+        <dd><strong>11’000 CHF</strong><span>Amortissements du matériel.</span></dd>
+      </div>
+      <div>
+        <dt>Frais divers</dt>
+        <dd><strong>18’000 CHF</strong><span>Fiduciaire, essence, repas aux champs, imprévus.</span></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container two-column budget-work-grid">
+    <div class="budget-copy">
+      <p class="eyebrow">Travail agricole</p>
+      <h2>Un salaire modeste pour beaucoup de responsabilités</h2>
+      <p>Les personnes salariées de l’équipe maraîchère travaillent chacune à temps partiel, avec un salaire net de 2075 CHF par mois — environ 2350 CHF brut — sur une référence de 50 h par semaine à 100 %.</p>
+      <p>L’équipe ne fait pas qu’exécuter des tâches. Elle porte le bon fonctionnement de l’exploitation: plans de culture, ajustements selon la météo, récoltes, préparation des paniers, accueil des membres, stages, visites et jeunes en formation.</p>
+      <p>Combien d’heures cela représente réellement? L’équipe n’a pas le temps de compter. Mais c’est assurément beaucoup.</p>
+    </div>
+
+    <aside class="budget-panel budget-comparison" aria-labelledby="budget-comparison-title">
+      <p class="eyebrow">À comparer</p>
+      <h2 id="budget-comparison-title">Pas beaucoup de beurre dans les épinards</h2>
+      <p>Dans l’agriculture, plus de la moitié des personnes employées sont dans la tranche de salaire à 3350 CHF brut par mois pour un 100 %.</p>
+      <p>Le contrat-type de travail prévoit environ 55 h par semaine, seulement 1.5 jours de congé par semaine et seulement 2 dimanches garantis par mois.</p>
+      <ul class="source-list">
+        <li><%= link_to 'Statistiques salariales agricoles', 'https://www.sbv-usp.ch/fr/statistique/publications/salaires/' %></li>
+        <li><%= link_to 'Contrat-type neuchâtelois', 'https://rsn.ne.ch/DATA/program/books/rsne/pdf/225.43.pdf' %></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container budget-support">
+    <div class="budget-support-copy">
+      <p class="eyebrow">Abonnement</p>
+      <h2>Votre panier peut soutenir les salaires</h2>
+      <p>Lors de l’inscription, vous pouvez choisir le tarif de base ou ajouter un supplément volontaire au prix de votre panier. Cette option rend visible le lien entre le prix de l’abonnement et le revenu de l’équipe maraîchère.</p>
+      <p>Les montants ci-dessous indiquent l’effet sur une année de 42 paniers.</p>
+      <div class="button-row">
+        <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+        <%= link_to 'Voir les tarifs des paniers', '/paniers/#tarifs', class: 'button-secondary' %>
+      </div>
+    </div>
+
+    <div class="budget-panel contribution-panel" aria-label="Options de supplément volontaire">
+      <ul class="contribution-options">
+        <li>
+          <strong>Tarif de base</strong>
+          <span>Sans supplément</span>
+        </li>
+        <li>
+          <strong>+ 1.– <small>/ panier</small></strong>
+          <span>+ 42 CHF par année</span>
+        </li>
+        <li>
+          <strong>+ 2.– <small>/ panier</small></strong>
+          <span>+ 84 CHF par année</span>
+        </li>
+        <li>
+          <strong>+ 4.– <small>/ panier</small></strong>
+          <span>+ 168 CHF par année</span>
+        </li>
+        <li>
+          <strong>+ 8.– <small>/ panier</small></strong>
+          <span>+ 336 CHF par année</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

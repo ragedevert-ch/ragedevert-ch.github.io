@@ -1,0 +1,14 @@
+- label: Accueil
+  path: /
+- label: Paniers
+  path: /paniers/
+- label: Équipe
+  path: /equipe/
+- label: Culture
+  path: /culture/
+- label: Budget
+  path: /budget/
+- label: Galerie
+  path: /galerie/
+- label: Contact
+  path: /contact/

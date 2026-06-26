@@ -1,0 +1,47 @@
+<% vegetables = data.vegetables.to_a %>
+<% if vegetables.any? %>
+  <template data-page-header-vegetables>
+    <% vegetables.each do |vegetable| %>
+      <%= local_image_tag vegetable.image, alt: '', class: 'page-header-vegetable', decoding: 'async', 'aria-hidden' => 'true' %>
+    <% end %>
+  </template>
+
+  <script>
+    (function () {
+      var template = document.querySelector("template[data-page-header-vegetables]");
+      var header = document.querySelector(".page-header");
+
+      if (!template || !template.content || !header) return;
+
+      var container = header.querySelector(".container");
+      var images = template.content.querySelectorAll("img");
+
+      if (!container || images.length === 0) return;
+
+      function nextVegetableNumber(total) {
+        var key = "ragedevert.pageHeaderVegetableNumber";
+        var next = 1;
+
+        try {
+          var stored = window.localStorage.getItem(key);
+          var last = parseInt(stored, 10);
+
+          if (last >= 1 && last <= total) {
+            next = last === total ? 1 : last + 1;
+          }
+
+          window.localStorage.setItem(key, String(next));
+        } catch (error) {
+          next = Math.floor(Math.random() * total) + 1;
+        }
+
+        return next;
+      }
+
+      var selected = images[nextVegetableNumber(images.length) - 1].cloneNode(true);
+      selected.classList.add("is-visible");
+      header.classList.add("has-vegetable");
+      container.appendChild(selected);
+    })();
+  </script>
+<% end %>

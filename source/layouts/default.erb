@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= page_title %></title>
+    <meta name="description" content="<%= page_description %>">
+    <link rel="canonical" href="<%= canonical_url %>">
+
+    <meta property="og:site_name" content="<%= site_title %>">
+    <meta property="og:locale" content="fr_CH">
+    <meta property="og:title" content="<%= page_title %>">
+    <meta property="og:description" content="<%= page_description %>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= canonical_url %>">
+    <meta property="og:image" content="<%= meta_image_url %>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="<%= meta_image_alt %>">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<%= page_title %>">
+    <meta name="twitter:description" content="<%= page_description %>">
+    <meta name="twitter:image" content="<%= meta_image_url %>">
+    <meta name="twitter:image:alt" content="<%= meta_image_alt %>">
+
+    <script type="application/ld+json"><%= organization_structured_data %></script>
+
+    <%= stylesheet_link_tag 'style' %>
+    <% if current_page.path == 'galerie.html' %>
+      <link rel="stylesheet" href="/vendor/photoswipe/photoswipe.css">
+      <script type="module" src="/vendor/photoswipe/init.js"></script>
+    <% end %>
+    <%= javascript_include_tag 'site', defer: true %>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="<%= image_path 'favicon.png' %>">
+  </head>
+  <body class="page-<%= current_page.path.delete_suffix('.html').tr('/', '-') %>">
+    <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <% link_to '/', class: 'brand' do %>
+          <span class="brand-copy">
+            <span class="brand-text">Rage de Vert</span>
+            <span class="brand-subtitle">Bio · local · Neuchâtel</span>
+          </span>
+        <% end %>
+
+        <nav class="desktop-nav" aria-label="Navigation principale">
+          <% data.navigation.each do |item| %>
+            <%= link_to item.label, item.path, active_link_attributes(item.path) %>
+          <% end %>
+        </nav>
+
+        <%= link_to 'Inscrivez-vous', signup_url, class: 'button header-signup' %>
+
+        <button class="mobile-menu-button" type="button" aria-haspopup="dialog" aria-controls="mobile-menu" aria-expanded="false" data-menu-open>
+          <span class="menu-icon" aria-hidden="true"></span>
+          <span>Menu</span>
+        </button>
+      </div>
+
+      <dialog id="mobile-menu" class="mobile-menu" aria-label="Navigation principale">
+        <div class="mobile-menu-panel">
+          <div class="mobile-menu-header">
+            <button class="mobile-menu-close" type="button" aria-label="Fermer le menu" data-menu-close>×</button>
+          </div>
+
+          <nav class="mobile-menu-nav" aria-label="Navigation mobile">
+            <% data.navigation.each do |item| %>
+              <%= link_to item.label, item.path, active_link_attributes(item.path) %>
+            <% end %>
+          </nav>
+
+          <div class="mobile-menu-actions">
+            <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+          </div>
+        </div>
+      </dialog>
+    </header>
+
+    <main id="contenu">
+      <%= yield %>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-banner" aria-hidden="true">
+        <%= local_image_tag 'banner.webp', alt: '', loading: 'lazy' %>
+      </div>
+
+      <div class="footer-body">
+        <div class="container footer-grid">
+          <div>
+            <h2>Rage de Vert</h2>
+            <p>Association d’agriculture urbaine contractuelle de proximité, bio et locale, entre Thielle-Wavre et Neuchâtel.</p>
+            <p class="footer-email"><a href="mailto:<%= site_email %>"><%= site_email %></a></p>
+
+            <nav class="social-links" aria-label="Réseaux sociaux">
+            <% link_to instagram_url, class: 'social-link social-link-instagram', 'aria-label' => 'Instagram' do %>
+              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm5.1-2.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2Z"/></svg>
+              <span class="sr-only">Instagram</span>
+            <% end %>
+            <% link_to facebook_url, class: 'social-link social-link-facebook', 'aria-label' => 'Facebook' do %>
+              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5v2h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+              <span class="sr-only">Facebook</span>
+            <% end %>
+            <% link_to linkedin_url, class: 'social-link social-link-linkedin', 'aria-label' => 'LinkedIn' do %>
+              <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path fill="currentColor" d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1a3.8 3.8 0 0 1 3.4-1.9c3.6 0 4.3 2.4 4.3 5.5v6.3ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.5H3.5V9h3.6v11.5ZM22.2 0H1.8C.8 0 0 .8 0 1.8v20.4C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.8c0-1-.8-1.8-1.8-1.8Z"/></svg>
+              <span class="sr-only">LinkedIn</span>
+            <% end %>
+            </nav>
+          </div>
+
+          <div>
+            <h2>Documents</h2>
+            <ul class="footer-links">
+              <li><%= link_to 'Conservation des légumes', '/s/ragdevert-conservation-legumes.pdf' %></li>
+              <li><%= link_to 'Règlement', '/s/ragdevert-reglement.pdf' %></li>
+              <li><%= link_to 'Statuts', '/s/ragdevert-statuts.pdf' %></li>
+              <li><%= link_to 'Charte', '/s/ragdevert-charte.pdf' %></li>
+            </ul>
+          </div>
+
+          <div>
+            <h2>Participer</h2>
+            <ul class="footer-links">
+              <li><%= link_to 'Inscription', signup_url %></li>
+              <li><%= link_to 'Espace membre', members_url %></li>
+              <li><%= link_to 'Flyer à partager', '/s/ragdevert-flyer.pdf' %></li>
+              <li><%= link_to 'Calendrier des livraisons', '/s/ragdevert-calendrier-livraisons-2026.pdf' %></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <% unless current_page.path == 'index.html' %>
+      <%= partial 'page_header_vegetable' %>
+    <% end %>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+---
+title: Paniers
+description: Tailles, tarifs, distribution et fonctionnement des paniers de légumes bio de Rage de Vert.
+---
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Abonnements</p>
+    <h1>Les paniers de légumes</h1>
+    <p>Rage de Vert propose trois tailles de paniers bio, locaux et de saison. L’abonnement annuel donne droit à 42 paniers par année, avec les 4 premiers paniers à l’essai sans engagement.</p>
+    <div class="button-row">
+      <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+      <%= link_to 'Voir les tailles et tarifs', '#tarifs', class: 'button-secondary' %>
+    </div>
+  </div>
+</section>
+
+<section class="section paniers-overview">
+  <div class="container two-column">
+    <div class="paniers-copy">
+      <p class="eyebrow">Fonctionnement</p>
+      <h2>Un abonnement annuel, des récoltes toute l’année</h2>
+      <p><strong>Un abonnement annuel</strong> donne droit à <strong>42 paniers</strong>. Ils sont distribués chaque semaine de mi-mai à mi-décembre, puis deux fois par mois de janvier à avril. Le contenu varie avec les saisons, la météo et le rythme des cultures.</p>
+
+      <div class="trial-callout paniers-trial-callout">
+        <span class="trial-callout-kicker">Essai simple</span>
+        <strong>Les 4 premiers paniers sont sans engagement.</strong>
+        <p>Testez le rythme, les quantités et les légumes avant de confirmer votre abonnement annuel.</p>
+      </div>
+    </div>
+
+    <div class="paniers-visual">
+      <figure class="image-card paniers-hero-image">
+        <%= local_image_tag 'galerie/thumbs/galerie-47.webp', alt: 'Grand panier de légumes bio de Rage de Vert', loading: 'lazy' %>
+      </figure>
+
+      <div class="bio-suisse-mark paniers-bio-suisse-mark">
+        <%= local_image_tag 'bio-suisse.svg', alt: 'Certification Bio Suisse', loading: 'lazy' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="tarifs">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Tarifs</p>
+      <h2>Choisir la taille du panier</h2>
+      <p>Les montants ci-dessous correspondent aux 42 paniers annuels. La cotisation annuelle de <strong>30 CHF</strong> s’ajoute à l’abonnement; les frais de distribution dépendent du mode choisi. Le formulaire d’inscription calcule le prix final selon vos options.</p>
+    </div>
+
+    <div class="price-grid paniers-price-grid">
+      <article class="price-card">
+        <p class="eyebrow">Petit</p>
+        <h3>Pour 1 personne</h3>
+        <span class="price-value"><span>17.50 CHF</span> <small>/ panier</small></span>
+        <p><strong>735 CHF</strong> pour 42 livraisons.</p>
+        <p class="monthly">Environ 61.25 CHF par mois.</p>
+      </article>
+
+      <article class="price-card">
+        <p class="eyebrow">Moyen</p>
+        <h3>Pour 2–3 personnes</h3>
+        <span class="price-value"><span>25 CHF</span> <small>/ panier</small></span>
+        <p><strong>1’050 CHF</strong> pour 42 livraisons.</p>
+        <p class="monthly">Environ 87.50 CHF par mois.</p>
+      </article>
+
+      <article class="price-card">
+        <p class="eyebrow">Grand</p>
+        <h3>Pour 4–5 personnes</h3>
+        <span class="price-value"><span>36.25 CHF</span> <small>/ panier</small></span>
+        <p><strong>1’522.50 CHF</strong> pour 42 livraisons.</p>
+        <p class="monthly">Environ 127 CHF par mois.</p>
+      </article>
+    </div>
+
+    <div class="tariff-transparency">
+      <h3>Prix juste et transparence</h3>
+      <p>Lors de l’inscription, vous pouvez aussi choisir un supplément volontaire au prix du panier pour soutenir les salaires de l’équipe maraîchère. Pour garder un œil sur la valeur indicative des récoltes, l’association compare ses paniers aux prix recommandés pour la vente directe.</p>
+      <p><%= link_to 'Voir le tableau de valeur des paniers 2024', image_path('paniers/valeur-paniers-2024.jpg'), target: '_blank', rel: 'noopener' %></p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="distribution">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Distribution</p>
+      <h2>Trois façons de recevoir vos légumes</h2>
+      <p>Vous choisissez le mode de distribution au moment de l’inscription. La carte donne un aperçu des lieux proposés; le formulaire affiche toujours les dépôts, adresses et suppléments à jour.</p>
+    </div>
+
+    <div class="distribution-choice-grid">
+      <article class="distribution-choice">
+        <span class="option-label">Option 1</span>
+        <h3>Remplir son panier au Jardin</h3>
+        <p>Le mercredi entre 16h et 19h, au Jardin de la Main, rue de la Main 6–8 à Neuchâtel. <%= link_to 'Voir l’accès', '/contact/#acces' %>.</p>
+        <p><strong>Sans supplément.</strong> Vous composez votre panier vous-même.</p>
+      </article>
+
+      <article class="distribution-choice">
+        <span class="option-label">Option 2</span>
+        <h3>Retirer un panier préparé</h3>
+        <p>Les paniers préparés sont disponibles le mercredi dans les dépôts du canton.</p>
+        <p><strong>Supplément:</strong> 3 à 4 CHF par panier, selon le lieu choisi.</p>
+      </article>
+
+      <article class="distribution-choice">
+        <span class="option-label">Option 3</span>
+        <h3>Livraison à domicile à vélo</h3>
+        <p>À Neuchâtel ou à La Chaux-de-Fonds, avec les cyclo-coursiers de <%= link_to 'la Cyclone', 'https://lacyclone.ch' %>.</p>
+        <p><strong>Supplément:</strong> 9 CHF par panier livré.</p>
+      </article>
+    </div>
+
+    <div class="depot-map-embed">
+      <iframe
+        title="Carte des dépôts Rage de Vert"
+        src="<%= admin_depots_map_url %>"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <div class="depot-summary">
+      <h3>Dépôts dans le canton</h3>
+      <p>Les dépôts couvrent Neuchâtel, le Littoral, le Val-de-Ruz, le Landeron et La Chaux-de-Fonds. Certains lieux regroupent plusieurs points proches, par exemple Neuchâtel avec le Jardin de la Main, le Quartier de la Côte et UNINE-Sciences. Les détails exacts restent centralisés dans le formulaire pour éviter les informations périmées.</p>
+      <ul class="takeaway-list depot-summary-list">
+        <li><strong>Panier préparé:</strong> supplément de 3 à 4 CHF par panier selon le dépôt.</li>
+        <li><strong>Horaires:</strong> disponibles le mercredi dès 13h, sauf Jardin de la Main et Cormondrèche dès 15h.</li>
+        <li><%= link_to 'Voir les dépôts, adresses et suppléments à jour dans le formulaire', signup_url %></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt paniers-seasons">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Saisons</p>
+      <h2>Ce qui arrive dans les paniers</h2>
+      <p>Quelques exemples de légumes, pour montrer le rythme d’une année. Les paniers d’été sont plus généreux; ceux d’hiver sont plus sobres, mais toujours cultivés avec soin.</p>
+    </div>
+
+    <ul class="season-list">
+      <li><strong>Janvier</strong><span>Courge, chou frisé, chou plume, navet, radis noir, panais, oignon.</span></li>
+      <li><strong>Avril</strong><span>Mesclun, salade pommée, colrave, poireaux, épinard et bette à tondre, oignons frais, ail frais, céleri, radis, pommes.</span></li>
+      <li><strong>Juillet</strong><span>Tomates, aubergines, haricots, courgettes, pâtissons, concombres, carottes, côtes de bette, poivrons, salades.</span></li>
+      <li><strong>Octobre</strong><span>Courge, radis rose, oignons, doucette, épinard et bette à tondre, céleri, rutabaga, coulis de tomates, scarole.</span></li>
+    </ul>
+
+    <div class="paniers-resources">
+      <h3>Documents utiles</h3>
+      <ul class="takeaway-list paniers-document-list">
+        <li><%= link_to 'Calendrier des livraisons 2026', '/s/ragdevert-calendrier-livraisons-2026.pdf' %></li>
+        <li><%= link_to 'Conservation des légumes', '/s/ragdevert-conservation-legumes.pdf' %></li>
+        <li><%= link_to 'Dictionnaire des légumes', 'http://www.amaplescourgettes.eu/le-dictionnaire-des-legumes.html' %></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="demi-journees">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Vie associative</p>
+      <h2>À savoir avant de s’abonner</h2>
+    </div>
+
+    <div class="paniers-practical-grid">
+      <article class="practical-item">
+        <h3>Demi-journées d’aide</h3>
+        <p><strong>Deux demi-journées de travail par année</strong> et par abonnement sont demandées. Ces moments permettent de rencontrer l’équipe, de comprendre les cultures et de mettre les mains dans la terre.</p>
+        <p>Une demi-journée non effectuée est facturée <strong>90 CHF</strong>. Toute aide est bienvenue, même en dehors des dates recommandées; les enfants peuvent accompagner les adultes lorsque les conditions aux champs s’y prêtent.</p>
+      </article>
+
+      <article class="practical-item">
+        <h3>Absences</h3>
+        <p>Si vous partez en vacances et ne pouvez pas récupérer vos légumes, annoncez-le en avance. Le panier sera redistribué.</p>
+        <p>Il est aussi possible de déplacer les paniers manqués avant ou après une absence afin de recevoir un double panier, ou de les laisser à une personne proche.</p>
+      </article>
+
+      <article class="practical-item">
+        <h3>Une part de jardin</h3>
+        <p>En s’abonnant, chaque membre loue en quelque sorte une part du jardin où sont cultivés les légumes. L’abonnement donne aussi le statut de membre de l’association, avec la cotisation annuelle de 30 CHF et le droit de vote à l’assemblée générale.</p>
+        <p>Comme dans tout jardin non traité, certains légumes peuvent avoir des imperfections. La nature est pleine d’humour, il suffit d’en rire.</p>
+      </article>
+    </div>
+
+    <div class="button-row paniers-final-cta">
+      <%= link_to 'Remplir le formulaire d’inscription', signup_url, class: 'button' %>
+    </div>
+  </div>
+</section>

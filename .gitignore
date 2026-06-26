@@ -1,0 +1,30 @@
+# Middleman build output
+build/
+
+# Ruby/Bundler
+.bundle/
+vendor/bundle/
+
+# Middleman cache
+.cache/
+.sass-cache/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Ruby LSP
+.ruby-lsp/

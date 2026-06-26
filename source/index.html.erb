@@ -1,0 +1,172 @@
+---
+title: Paniers de légumes bio à Neuchâtel
+description: Des légumes bio et locaux en paniers, cultivés par Rage de Vert à Thielle-Wavre et distribués à Neuchâtel et La Chaux-de-Fonds.
+---
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="hero-logo-frame">
+        <%= local_image_tag 'logo.webp', alt: 'Rage de Vert', class: 'hero-logo' %>
+      </div>
+
+      <p class="eyebrow">Agriculture Contractuelle de Proximité</p>
+      <h1>Paniers de légumes bio, locaux et de saison</h1>
+      <p class="hero-lead">Rage de Vert <%= link_to 'cultive des légumes à Thielle-Wavre', '/culture/' %> et les distribue chaque semaine à Neuchâtel, La Chaux-de-Fonds et dans plusieurs <%= link_to 'points de dépôt à travers le canton', '/paniers/#distribution' %>. En vous abonnant, vous soutenez une association locale et participez concrètement à la vie des champs.</p>
+      <div class="button-row">
+        <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+        <%= link_to 'Découvrir les paniers', '/paniers/', class: 'button-secondary' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section subscription-section">
+  <div class="container subscription-grid">
+    <div class="subscription-copy">
+      <p class="eyebrow">Abonnements</p>
+      <h2>Nous accueillons de nouveaux membres pour 2026!</h2>
+      <p>Choisissez votre <%= link_to 'panier de légumes', '/paniers/' %> et recevez une récolte bio, locale et de saison, distribuée à domicile à vélo, au Jardin de la Main ou dans l’un des <%= link_to 'points de dépôt', '/paniers/#distribution' %>.</p>
+      <p>Chaque abonnement soutient directement le travail de l’équipe maraîchère et la vie associative de Rage de Vert.</p>
+      <p class="sharing-note">Envie d’en parler autour de vous? <%= link_to 'Partagez le flyer Rage de Vert', '/s/ragdevert-flyer.pdf' %> avec vos proches.</p>
+
+      <div class="trial-callout">
+        <span class="trial-callout-kicker">Essai simple</span>
+        <strong>Les 4 premiers paniers sont sans engagement.</strong>
+        <p>Testez le rythme, les quantités et les légumes avant de confirmer votre abonnement annuel.</p>
+      </div>
+
+      <div class="button-row">
+        <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+        <%= link_to 'Voir les tailles et tarifs', '/paniers/#tarifs', class: 'button-secondary' %>
+      </div>
+    </div>
+
+    <div class="subscription-aside">
+      <aside class="notice subscription-facts">
+        <h3>42 paniers par année</h3>
+        <ul class="fact-list">
+          <li>
+            <span class="fact-label">Mi-mai à mi-décembre</span>
+            <strong>1 panier chaque semaine</strong>
+          </li>
+          <li>
+            <span class="fact-label">Janvier à avril</span>
+            <strong>1 panier toutes les 2 semaines</strong>
+          </li>
+          <li>
+            <span class="fact-label">Aide aux champs</span>
+            <strong><%= link_to '2 demi-journées par année', '/paniers/#demi-journees' %></strong>
+          </li>
+        </ul>
+      </aside>
+
+      <div class="bio-suisse-mark">
+        <%= local_image_tag 'bio-suisse.svg', alt: 'Certification Bio Suisse', loading: 'lazy' %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Témoignages</p>
+      <h2>Ce qu’en disent les membres</h2>
+    </div>
+
+    <div class="quote-grid">
+      <article class="quote-card">
+        <blockquote>
+          <p>Je me suis abonnée pour manger local, bio et de saison. Ce que j’apprécie le plus c’est que Rage de Vert c’est super naturel, <strong>super durable, super bon et super sympa</strong>!</p>
+          <cite>— Léonie</cite>
+        </blockquote>
+      </article>
+
+      <article class="quote-card">
+        <blockquote>
+          <p>Ce que j’aime le plus, c’est l’<strong>ambiance conviviale</strong>. L’<strong>équipe maraîchère est adorable</strong> et j’apprécie aller <strong>donner un coup de main</strong> de temps en temps.</p>
+          <cite>— Fanny</cite>
+        </blockquote>
+      </article>
+
+      <article class="quote-card">
+        <blockquote>
+          <p>Grâce à Rage de Vert, je consomme <strong>local et bio tout en soutenant des valeurs qui me tiennent à cœur</strong>. Ce que j’aime le plus, c’est l’<strong>équipe sympa</strong> et les <strong>échanges lors des travaux agricoles</strong>.</p>
+          <cite>— Johanna</cite>
+        </blockquote>
+      </article>
+
+      <article class="quote-card">
+        <blockquote>
+          <p>Je suis ravi d’avoir rejoint cette association dotée d’une chouette équipe de <strong>personnes motivées</strong> qui me permettent de <strong>manger des légumes différents et plus variés</strong> que ceux qu’on trouve en grande surface.</p>
+          <cite>— Andrea</cite>
+        </blockquote>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header takeaway-header">
+      <p class="eyebrow">Pratique</p>
+      <h2>Infos rapides</h2>
+    </div>
+
+    <dl class="quick-info-list split-detail-list">
+      <div>
+        <dt>Abonnement</dt>
+        <dd>42 paniers par année</dd>
+      </div>
+      <div>
+        <dt>Essai simple</dt>
+        <dd>4 premiers paniers sans engagement</dd>
+      </div>
+      <div>
+        <dt>Aide aux champs</dt>
+        <dd><%= link_to '2 demi-journées par année', '/paniers/#demi-journees' %></dd>
+      </div>
+      <div>
+        <dt>Jeudi matin</dt>
+        <dd>Mini marché à Thielle, Closel-Bourbon 2</dd>
+      </div>
+      <div>
+        <dt>Calendrier</dt>
+        <dd><%= link_to 'Livraisons 2026', '/s/ragdevert-calendrier-livraisons-2026.pdf' %></dd>
+      </div>
+      <div>
+        <dt>Documents</dt>
+        <dd>
+          <%= link_to 'Règlement', '/s/ragdevert-reglement.pdf' %>, <%= link_to 'Statuts', '/s/ragdevert-statuts.pdf' %>, <%= link_to 'Charte', '/s/ragdevert-charte.pdf' %>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Galerie</p>
+      <h2>Quelques images des champs et de l’association</h2>
+    </div>
+
+    <% gallery_by_image = data.gallery.each_with_object({}) { |item, gallery| gallery[File.basename(item.image)] = item } %>
+    <% homepage_gallery = data.home_gallery.map { |image| gallery_by_image[File.basename(image)] }.compact %>
+    <% homepage_gallery = data.gallery.first(8) if homepage_gallery.empty? %>
+
+    <div class="gallery-grid gallery-preview">
+      <% homepage_gallery.each_with_index do |item, index| %>
+        <% thumbnail = item.thumbnail || item.image %>
+        <figure>
+          <%= gallery_image_tag thumbnail, item, alt: gallery_preview_alt(item, index), loading: 'lazy' %>
+        </figure>
+      <% end %>
+    </div>
+
+    <div class="button-row">
+      <%= link_to 'Voir toute la galerie', '/galerie/', class: 'button' %>
+    </div>
+  </div>
+</section>

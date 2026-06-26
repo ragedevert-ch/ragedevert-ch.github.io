@@ -1,0 +1,135 @@
+---
+title: Contact
+description: Coordonnées, adresses, accès aux champs et documents de l’association Rage de Vert.
+---
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Nous joindre</p>
+    <h1>Contact</h1>
+    <p>Une question sur les paniers, l’aide aux champs, un stage ou la vie de l’association? Écrivez‑nous ou appelez‑nous, nous vous répondrons avec plaisir.</p>
+  </div>
+</section>
+
+<section class="section contact-section">
+  <div class="container contact-grid">
+    <div class="contact-main">
+      <div class="section-header contact-header">
+        <p class="eyebrow">Nous écrire</p>
+        <h2>Le plus simple: un message</h2>
+        <p>Pour s’abonner, le plus rapide est de <%= link_to 'remplir le formulaire d’inscription', signup_url %>. Pour une question avant de vous décider, écrivez‑nous.</p>
+      </div>
+
+      <ul class="contact-list contact-methods">
+        <li>
+          <span class="contact-label">Courriel</span>
+          <a href="mailto:<%= site_email %>"><%= site_email %></a>
+        </li>
+        <li>
+          <span class="contact-label">Champs et demi-journées</span>
+          <a href="tel:+41774796392">+41 77 479 63 92</a>
+        </li>
+        <li>
+          <span class="contact-label">Administration</span>
+          <a href="tel:+41764811384">+41 76 481 13 84</a>
+        </li>
+      </ul>
+
+      <div class="admin-details">
+        <div class="postal-address">
+          <h3>Adresse officielle</h3>
+          <address>
+            Perspective Plus<br>
+            À l’attention de Rage de Vert<br>
+            Closel-Bourbon 3<br>
+            2075 Thielle-Wavre
+          </address>
+        </div>
+
+        <div class="bank-details">
+          <h3>Coordonnées bancaires</h3>
+          <dl class="bank-list">
+            <div>
+              <dt>Compte postal</dt>
+              <dd>CP 20-7356-3</dd>
+            </div>
+            <div>
+              <dt>IBAN</dt>
+              <dd>CH73 8080 8009 1540 1498 7</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <aside class="notice contact-volunteer">
+      <p class="eyebrow">Participer</p>
+      <h2>Stages et coups de main</h2>
+      <p>Envie de découvrir la vie des champs ou de donner un coup de main? L’équipe accueille volontiers des personnes motivées de mars à décembre, surtout du lundi au jeudi.</p>
+      <p>Les stages ne sont pas rémunérés, faute de budget dédié. En échange, vous participez concrètement aux cultures, rencontrez l’équipe et repartez avec des légumes.</p>
+      <p>Écrivez‑nous avant de passer: nous vous dirons quand votre aide sera la plus utile.</p>
+      <p class="contact-volunteer-email"><%= link_to 'jardin@ragedevert.ch', 'mailto:jardin@ragedevert.ch' %></p>
+    </aside>
+  </div>
+</section>
+
+<section class="section section-alt" id="acces">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Accès</p>
+      <h2>Venir aux champs et au Jardin de la Main</h2>
+      <p>Pour les demi-journées, le mini marché et les rendez-vous aux cultures, venez aux champs. Le Jardin de la Main sert aussi de lieu de distribution.</p>
+    </div>
+
+    <div class="location-grid">
+      <article class="location-card location-card-map">
+        <div class="location-map">
+          <iframe
+            title="Carte des champs Rage de Vert à Thielle-Wavre"
+            src="<%= admin_depots_map_url(depot_ids: 10) %>"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="location-body">
+          <p class="eyebrow">Thielle-Wavre</p>
+          <h3>Les champs</h3>
+          <p>Cultures et demi-journées.</p>
+          <address>
+            Closel-Bourbon 2<br>
+            2075 Thielle-Wavre
+          </address>
+          <div class="location-actions">
+            <%= link_to 'Plan d’accès PDF', '/s/ragdevert-plan-acces-thielle.pdf', class: 'text-action-link' %>
+            <%= link_to 'Google Maps', 'https://www.google.com/maps?q=47.02047534040518,7.029074674516895', class: 'text-action-link' %>
+          </div>
+        </div>
+      </article>
+
+      <article class="location-card location-card-map">
+        <div class="location-map">
+          <iframe
+            title="Carte du Jardin de la Main à Neuchâtel"
+            src="<%= admin_depots_map_url(depot_ids: 1) %>"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div class="location-body">
+          <p class="eyebrow">Neuchâtel</p>
+          <h3>Le Jardin de la Main</h3>
+          <p>Lieu de distribution des légumes.</p>
+          <address>
+            Rue de la Main 6–8<br>
+            2000 Neuchâtel
+          </address>
+          <div class="location-actions">
+            <%= link_to 'Google Maps', 'https://www.google.com/maps?q=46.98899814230239,6.9197201203696705', class: 'text-action-link' %>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

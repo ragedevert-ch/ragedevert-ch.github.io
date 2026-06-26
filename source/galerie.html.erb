@@ -1,0 +1,32 @@
+---
+title: Galerie
+description: Photos de Rage de Vert au gré des saisons, des champs, des livraisons et de l’association.
+---
+
+<section class="page-header page-gallery">
+  <div class="container">
+    <p class="eyebrow">Photos</p>
+    <h1>Galerie</h1>
+    <p>Les photos au gré des saisons, des champs et de l’association.</p>
+
+    <div id="photo-gallery" class="gallery-grid pswp-gallery">
+      <% data.gallery.each_with_index do |item, index| %>
+        <% size = local_image_size(item.image) %>
+        <% thumbnail = item.thumbnail || item.image %>
+        <% link_to gallery_image_path(item.image, item), {
+          'aria-label' => gallery_link_label(item, index),
+          'data-pswp-width' => size ? size[0] : nil,
+          'data-pswp-height' => size ? size[1] : nil,
+          'target' => '_blank',
+          'rel' => 'noopener'
+        } do %>
+          <%= gallery_image_tag thumbnail, item, alt: '', loading: 'lazy' %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <p class="gallery-memory">
+      Vidéo : <%= link_to '1ère livraison de Rage de Vert', 'https://vimeo.com/39901770' %>, en 2011.
+    </p>
+  </div>
+</section>
