@@ -141,5 +141,9 @@
     <% unless current_page.path == 'index.html' %>
       <%= partial 'page_header_vegetable' %>
     <% end %>
+
+    <% if cloudflare_web_analytics_enabled? %>
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='<%= cloudflare_web_analytics_config %>'></script>
+    <% end %>
   </body>
 </html>

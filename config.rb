@@ -40,6 +40,7 @@ set :members_url, 'https://membres.ragedevert.ch'
 set :instagram_url, 'https://www.instagram.com/ragedevert'
 set :facebook_url, 'https://www.facebook.com/ragedevert.ch'
 set :linkedin_url, 'https://www.linkedin.com/company/association-rage-de-vert'
+set :cloudflare_web_analytics_token, '688c3e4307cf41be893977dbc9d38c02'
 
 helpers do
   def site_title
@@ -115,6 +116,14 @@ helpers do
     attributes = { class: active_link_class(path) }
     attributes['aria-current'] = 'page' if active_path?(path)
     attributes
+  end
+
+  def cloudflare_web_analytics_enabled?
+    build? && config[:cloudflare_web_analytics_token].to_s.strip != ''
+  end
+
+  def cloudflare_web_analytics_config
+    JSON.generate(token: config[:cloudflare_web_analytics_token])
   end
 
   def page_title
