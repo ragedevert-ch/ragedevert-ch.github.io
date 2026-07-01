@@ -36,7 +36,7 @@ set :site_description, 'Association Rage de Vert, agriculture urbaine contractue
 set :site_url, 'https://www.ragedevert.ch'
 set :site_email, 'info@ragedevert.ch'
 set :signup_url, 'https://membres.ragedevert.ch/new'
-set :members_url, 'https://membres.ragedevert.ch'
+set :members_url, 'https://membres.ragedevert.ch/login'
 set :instagram_url, 'https://www.instagram.com/ragedevert'
 set :facebook_url, 'https://www.facebook.com/ragedevert.ch'
 set :linkedin_url, 'https://www.linkedin.com/company/association-rage-de-vert'
