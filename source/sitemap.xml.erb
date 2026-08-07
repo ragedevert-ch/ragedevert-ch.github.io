@@ -10,4 +10,21 @@ layout: false
     <priority><%= item.path == '/' ? '1.0' : '0.8' %></priority>
   </url>
   <% end %>
+  <url>
+    <loc><%= site_url %>/gribouille/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <% gribouille_all_items.each do |item| %>
+    <% entry = gribouille_entry(item) %>
+    <% next unless entry %>
+  <url>
+    <loc><%= gribouille_url(entry) %></loc>
+    <% if (lastmod = gribouille_iso_time(entry.updated_at || entry.published_at)) && lastmod.include?('T') %>
+    <lastmod><%= lastmod.split('T').first %></lastmod>
+    <% end %>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <% end %>
 </urlset>

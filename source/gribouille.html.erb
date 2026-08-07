@@ -1,0 +1,56 @@
+---
+title: La Gribouille
+description: "La newsletter hebdomadaire de Rage de Vert — paniers, échos des champs, événements et recettes de l’équipe maraîchère."
+---
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow">Newsletter</p>
+    <h1>La Gribouille</h1>
+    <p>Chaque semaine, l’équipe maraîchère raconte la vie des champs, le contenu probable des paniers, les prochains rendez-vous et une idée de recette. Retrouvez ici les dernières Gribouilles partagées avec les membres.</p>
+  </div>
+</section>
+
+<section class="section gribouille-section">
+  <div class="container">
+    <% issues = gribouille_index_items %>
+    <% total_count = gribouille_all_items.size %>
+
+    <% if issues.empty? %>
+      <div class="gribouille-empty">
+        <p class="eyebrow">Bientôt</p>
+        <h2>Les prochaines Gribouilles arriveront ici</h2>
+        <p>Cette page accueillera les notes publiques de l’équipe au fil de la saison.</p>
+      </div>
+    <% else %>
+      <div class="gribouille-list">
+        <% issues.each_with_index do |item, index| %>
+          <% entry = gribouille_entry(item) %>
+          <% next unless entry %>
+
+          <details class="gribouille-issue" id="gribouille-<%= entry.id %>" <%= 'open' if index.zero? %>>
+            <summary>
+              <span class="gribouille-issue-title"><%= entry.title %></span>
+              <span class="gribouille-issue-toggle" aria-hidden="true"></span>
+            </summary>
+
+            <div class="gribouille-issue-body">
+              <%= partial 'gribouille_body', locals: { entry: entry } %>
+
+              <p class="gribouille-permalink">
+                <%= link_to 'Page permanente', gribouille_path(entry) %>
+              </p>
+            </div>
+          </details>
+        <% end %>
+      </div>
+
+      <% if total_count > issues.size %>
+        <p class="gribouille-index-note">
+          Les <%= issues.size %> dernières Gribouilles sont listées ici.
+          Les plus anciennes restent disponibles via leur page permanente et le sitemap.
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+</section>

@@ -52,6 +52,30 @@ The high-resolution logo source is kept in `source/assets/images/logo-source.png
 ruby scripts/prepare_logo_images.rb
 ```
 
+## Gribouille newsletters
+
+Public weekly Gribouilles are pulled from the CSA Admin Atom feed and materialised into the repo:
+
+```sh
+ruby scripts/sync_gribouilles.rb
+```
+
+Local CSA Admin preview:
+
+```sh
+GRIBOUILLE_FEED_URL='https://membres.ragedevert.test/newsletters.atom?template_id=9' \
+  ruby scripts/sync_gribouilles.rb
+```
+
+The script downloads entry HTML images and PDF attachments immediately, rewrites image paths to local assets, and updates:
+
+- `data/gribouilles.yml`
+- `data/gribouille_entries/<id>.yml`
+- `source/assets/images/gribouille/<id>/`
+- `source/s/gribouille/<id>/`
+
+The archive page is `/gribouille/`. A daily GitHub Action (`.github/workflows/sync-gribouilles.yml`) runs the same sync against production and commits when content changes; the existing Pages deploy workflow then rebuilds the site.
+
 ## Build and validation
 
 ```sh

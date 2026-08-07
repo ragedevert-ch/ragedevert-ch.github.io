@@ -11,11 +11,13 @@
     <meta property="og:locale" content="fr_CH">
     <meta property="og:title" content="<%= page_title %>">
     <meta property="og:description" content="<%= page_description %>">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="<%= og_type %>">
     <meta property="og:url" content="<%= canonical_url %>">
     <meta property="og:image" content="<%= meta_image_url %>">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <% if (og_dims = meta_image_dimensions) %>
+      <meta property="og:image:width" content="<%= og_dims[0] %>">
+      <meta property="og:image:height" content="<%= og_dims[1] %>">
+    <% end %>
     <meta property="og:image:alt" content="<%= meta_image_alt %>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<%= page_title %>">
@@ -23,7 +25,9 @@
     <meta name="twitter:image" content="<%= meta_image_url %>">
     <meta name="twitter:image:alt" content="<%= meta_image_alt %>">
 
-    <script type="application/ld+json"><%= organization_structured_data %></script>
+    <% page_structured_data_list.each do |payload| %>
+      <script type="application/ld+json"><%= json_ld(payload) %></script>
+    <% end %>
 
     <%= stylesheet_link_tag 'style' %>
     <% if current_page.path == 'galerie.html' %>
@@ -126,6 +130,7 @@
             <ul class="footer-links">
               <li><%= link_to 'Inscription', signup_url %></li>
               <li><%= link_to 'Espace membre', members_url %></li>
+              <li><%= link_to 'La Gribouille', '/gribouille/' %></li>
               <li><%= link_to 'Flyer à partager', '/s/ragdevert-flyer.pdf' %></li>
               <li><%= link_to 'Calendrier des livraisons', '/s/ragdevert-calendrier-livraisons-2026.pdf' %></li>
             </ul>

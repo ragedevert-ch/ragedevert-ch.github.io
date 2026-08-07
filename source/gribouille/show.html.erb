@@ -1,0 +1,35 @@
+<% entry = current_gribouille_entry %>
+<% raise "Missing Gribouille entry for #{current_page.path}" unless entry %>
+<% newer_entry, older_entry = gribouille_neighbors(entry) %>
+
+<section class="page-header">
+  <div class="container">
+    <p class="eyebrow"><%= link_to 'La Gribouille', '/gribouille/' %></p>
+    <h1><%= entry.title %></h1>
+    <p>La note hebdomadaire de l’équipe maraîchère, partagée avec les membres de Rage de Vert.</p>
+  </div>
+</section>
+
+<section class="section gribouille-section">
+  <div class="container">
+    <article class="gribouille-issue gribouille-issue-page">
+      <div class="gribouille-issue-body">
+        <%= partial 'gribouille_body', locals: { entry: entry } %>
+      </div>
+    </article>
+
+    <nav class="gribouille-pager" aria-label="Autres Gribouilles">
+      <div class="gribouille-pager-links">
+        <% if newer_entry %>
+          <%= link_to "Plus récente: #{newer_entry.title}", gribouille_path(newer_entry) %>
+        <% end %>
+        <% if older_entry %>
+          <%= link_to "Plus ancienne: #{older_entry.title}", gribouille_path(older_entry) %>
+        <% end %>
+      </div>
+      <p class="gribouille-pager-index">
+        <%= link_to 'Toutes les Gribouilles', '/gribouille/' %>
+      </p>
+    </nav>
+  </div>
+</section>

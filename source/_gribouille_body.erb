@@ -1,0 +1,24 @@
+<div class="gribouille-content trix-content">
+  <%= gribouille_sections_html(entry) %>
+</div>
+
+<% attachments = Array(entry.attachments) %>
+<% if attachments.any? %>
+  <div class="gribouille-attachments">
+    <p class="eyebrow">Pièces jointes</p>
+    <ul class="gribouille-attachment-list">
+      <% attachments.each do |attachment| %>
+        <li>
+          <%= link_to attachment.title, attachment.path, class: 'gribouille-attachment-link' %>
+          <% meta = [] %>
+          <% meta << 'PDF' if attachment.type.to_s.include?('pdf') %>
+          <% size_label = gribouille_file_size(attachment.bytes) %>
+          <% meta << size_label if size_label %>
+          <% if meta.any? %>
+            <span class="gribouille-attachment-meta"><%= meta.join(' · ') %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

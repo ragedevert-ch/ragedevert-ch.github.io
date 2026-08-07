@@ -19,18 +19,25 @@ Project-specific guidance for the Rage de Vert static site.
 - Prepare logo and favicon images from the source logo: `ruby scripts/prepare_logo_images.rb`
 - Prepare decorative vegetable images: `ruby scripts/prepare_vegetable_images.rb [source_directory]`
 - Curate homepage gallery picks by listing committed `galerie-*.jpg` filenames in `data/home_gallery.yml`.
+- Sync public Gribouille newsletters from CSA Admin: `ruby scripts/sync_gribouilles.rb`
+  - Default feed: `https://membres.ragedevert.ch/newsletters.atom?template_id=9`
+  - Local preview override: `GRIBOUILLE_FEED_URL=https://membres.ragedevert.test/newsletters.atom?template_id=9 ruby scripts/sync_gribouilles.rb`
+  - Flags: `--dry-run`, `--force`, `--feed-url URL`
+  - Writes `data/gribouilles.yml`, `data/gribouille_entries/*.yml`, images under `source/assets/images/gribouille/`, PDFs under `source/s/gribouille/`.
+  - Automated daily by `.github/workflows/sync-gribouilles.yml` (also `workflow_dispatch`).
 
 ## Prerequisites
 
 - Ruby version is pinned in `.ruby-version`.
 - Install dependencies with `bundle install`.
-- ImageMagick is required for gallery, logo, and vegetable image preparation scripts (`brew install imagemagick` on macOS).
+- ImageMagick is required for gallery, logo, vegetable, and Gribouille image preparation scripts (`brew install imagemagick` on macOS).
 
 ## Review checklist
 
 - Source/content change: run `bundle exec middleman build` and `ruby scripts/check_static_links.rb build`.
 - Visual/layout change: inspect desktop and mobile views in a browser, including the mobile menu and prominent headings.
 - Gallery change: run `ruby scripts/prepare_gallery_images.rb`, verify `data/gallery.yml`, then curate `data/home_gallery.yml` if homepage picks should change.
+- Gribouille change: run `ruby scripts/sync_gribouilles.rb` (or wait for the daily Action), then build and check links. Keep `/gribouille/` out of the primary nav; footer/contextual links only.
 - Logo/icon change: update `source/assets/images/logo-source.png`, run `ruby scripts/prepare_logo_images.rb`, then build and check links.
 - Link/document change: keep `/s/` document filenames stable and clean, update all references together, and run the link checker after build.
 - SEO/domain change: confirm the canonical host first, then update `config.rb`, `source/robots.txt`, and `source/CNAME` together.
@@ -130,7 +137,8 @@ Use the CSS variables in `source/assets/css/style.css` as the source of truth:
 - Respect reduced-motion preferences and keep visible `:focus-visible` states on custom controls.
 - Localize third-party UI labels when they are exposed to users or assistive technologies.
 - Prefer existing helpers and data files over duplicating markup. Add new data files only when they reduce repeated page code.
-- Generated data boundaries: `data/gallery.yml` comes from `scripts/prepare_gallery_images.rb`, `data/vegetables.yml` comes from `scripts/prepare_vegetable_images.rb`, and `data/home_gallery.yml` is manually curated.
+- Generated data boundaries: `data/gallery.yml` comes from `scripts/prepare_gallery_images.rb`, `data/vegetables.yml` comes from `scripts/prepare_vegetable_images.rb`, `data/home_gallery.yml` is manually curated, and `data/gribouilles.yml` + `data/gribouille_entries/*.yml` come from `scripts/sync_gribouilles.rb` (do not hand-edit).
+- Gribouille pages: `/gribouille/` lists the latest 20 issues as `<details>` panels; every stored issue also has a permanent URL `/gribouille/<id>/` (sitemap + BlogPosting JSON-LD). Images stay unhashed under `assets/images/gribouille/`; attachments use stable `/s/gribouille/<id>/…` paths.
 - Generated logo boundaries: `source/assets/images/logo-source.png` is the high-resolution source and is ignored from the generated site; `logo.webp`, favicons, Apple touch icon, and `favicon.ico` come from `scripts/prepare_logo_images.rb`.
 - Asset boundaries: optimized gallery files and WebP thumbnails are committed. Keep large originals outside the repository; unused files under `source/assets/images/` are still copied into `build/` unless moved or ignored.
 - Keep `/vendor/photoswipe/` ES modules unminified in build config.

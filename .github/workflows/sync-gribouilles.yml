@@ -1,0 +1,45 @@
+name: Sync Gribouille newsletters
+
+on:
+  schedule:
+    # Daily morning Europe (05:15 UTC)
+    - cron: "15 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-gribouilles
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install ImageMagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Sync Gribouille feed
+        env:
+          GRIBOUILLE_FEED_URL: https://membres.ragedevert.ch/newsletters.atom?template_id=9
+          # Ubuntu ImageMagick still exposes the legacy `convert` binary.
+          MAGICK: convert
+        run: ruby scripts/sync_gribouilles.rb
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/gribouilles.yml data/gribouille_entries source/assets/images/gribouille source/s/gribouille
+          if git diff --cached --quiet; then
+            echo "No Gribouille changes to commit."
+            exit 0
+          fi
+          git commit -m "Sync Gribouille newsletters from CSA Admin"
+          git push

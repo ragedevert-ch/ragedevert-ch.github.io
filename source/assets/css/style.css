@@ -108,7 +108,8 @@ button:focus-visible,
 .mobile-menu-button:focus-visible,
 .mobile-menu-close:focus-visible,
 .social-link:focus-visible,
-.gallery-grid a:focus-visible {
+.gallery-grid a:focus-visible,
+.gribouille-issue summary:focus-visible {
   outline: 3px solid rgba(135, 90, 53, 0.58);
   outline-offset: 0.18rem;
 }
@@ -1762,6 +1763,253 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+}
+
+.gribouille-section {
+  background: var(--color-cream);
+}
+
+.gribouille-empty {
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(31, 95, 56, 0.16);
+  border-radius: var(--radius);
+  max-width: 42rem;
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+
+.gribouille-empty h2 {
+  color: var(--color-green-dark);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+}
+
+.gribouille-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.gribouille-issue {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(31, 95, 56, 0.16);
+  border-radius: var(--radius);
+  overflow: clip;
+}
+
+.gribouille-issue summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  list-style: none;
+  padding: clamp(1rem, 2.5vw, 1.35rem) clamp(1rem, 2.8vw, 1.5rem);
+}
+
+.gribouille-issue summary::-webkit-details-marker {
+  display: none;
+}
+
+.gribouille-issue summary:hover {
+  background: rgba(183, 212, 93, 0.14);
+}
+
+.gribouille-issue[open] summary {
+  background: rgba(223, 234, 169, 0.42);
+  border-bottom: 1px solid rgba(31, 95, 56, 0.12);
+}
+
+.gribouille-issue-title {
+  color: var(--color-green-dark);
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  min-width: 0;
+}
+
+.gribouille-issue-toggle {
+  background: rgba(183, 212, 93, 0.28);
+  border-radius: 999px;
+  flex: 0 0 auto;
+  height: 2rem;
+  position: relative;
+  width: 2rem;
+}
+
+.gribouille-issue-toggle::before,
+.gribouille-issue-toggle::after {
+  background: var(--color-green-dark);
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gribouille-issue-toggle::before {
+  height: 2px;
+  width: 0.85rem;
+}
+
+.gribouille-issue-toggle::after {
+  height: 0.85rem;
+  width: 2px;
+}
+
+.gribouille-issue[open] .gribouille-issue-toggle::after {
+  display: none;
+}
+
+.gribouille-issue-body {
+  padding: 0 clamp(1rem, 2.8vw, 1.5rem) clamp(1.2rem, 3vw, 1.7rem);
+}
+
+.gribouille-issue-page .gribouille-issue-body {
+  padding-top: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.gribouille-content {
+  color: var(--color-soil-dark);
+  display: grid;
+  gap: clamp(1.2rem, 2.5vw, 1.7rem);
+  padding-top: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+.gribouille-issue-page .gribouille-content {
+  padding-top: 0;
+}
+
+.gribouille-content > section {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.gribouille-content h2 {
+  color: var(--color-green-dark);
+  font-family: var(--font-title);
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.gribouille-content .trix-content,
+.gribouille-content .trix-content > div {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.gribouille-content p,
+.gribouille-content .trix-content {
+  margin: 0;
+}
+
+.gribouille-content ul,
+.gribouille-content ol {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.gribouille-content li + li {
+  margin-top: 0.3rem;
+}
+
+.gribouille-content a {
+  font-weight: 700;
+}
+
+.gribouille-content .attachment,
+.gribouille-content figure.attachment {
+  display: grid;
+  justify-items: center;
+  margin: 0.85rem 0 0;
+}
+
+.gribouille-content .attachment img,
+.gribouille-content figure.attachment img,
+.gribouille-content img {
+  background: var(--color-white);
+  border: 1px solid rgba(31, 95, 56, 0.12);
+  border-radius: var(--radius-sm);
+  display: block;
+  height: auto;
+  margin-inline: auto;
+  max-width: 32rem;
+  width: 100%;
+}
+
+.gribouille-attachments {
+  border-top: 1px solid rgba(31, 95, 56, 0.12);
+  margin-top: clamp(1.2rem, 2.5vw, 1.6rem);
+  padding-top: clamp(1rem, 2.2vw, 1.3rem);
+}
+
+.gribouille-attachment-list {
+  display: grid;
+  gap: 0.55rem;
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.gribouille-attachment-list li {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+}
+
+.gribouille-attachment-link {
+  font-weight: 700;
+}
+
+.gribouille-attachment-meta {
+  color: var(--color-muted);
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gribouille-permalink {
+  margin: clamp(1rem, 2vw, 1.25rem) 0 0;
+}
+
+.gribouille-permalink a {
+  font-family: var(--font-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.gribouille-index-note {
+  color: var(--color-muted);
+  margin: clamp(1.2rem, 2.5vw, 1.6rem) 0 0;
+  max-width: 42rem;
+}
+
+.gribouille-pager {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(1.4rem, 3vw, 2rem);
+}
+
+.gribouille-pager-links {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.gribouille-pager-links a,
+.gribouille-pager-index a {
+  font-weight: 700;
+}
+
+.gribouille-pager-index {
+  margin: 0;
 }
 
 .site-footer {
