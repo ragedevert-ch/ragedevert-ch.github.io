@@ -261,6 +261,23 @@ def entry_up_to_date?(existing, remote, force:)
     existing["published_at"] == remote["published_at"]
 end
 
+# Map content_digest -> entry id for already materialised issues (non-empty digests only).
+def load_digest_owners
+  owners = {}
+  Dir.glob(File.join(ENTRIES_DIR, "*.yml")).each do |path|
+    entry = YAML.safe_load_file(path, permitted_classes: [Date, Time])
+    next unless entry.is_a?(Hash) && entry["id"]
+
+    digest = entry["content_digest"].to_s
+    next if digest.empty?
+
+    owners[digest] ||= entry["id"].to_i
+  end
+  owners
+rescue Psych::SyntaxError => error
+  raise SyncError, "Invalid YAML while scanning digests: #{error.message}"
+end
+
 def sanitize_filename(name, fallback:)
   base = name.to_s.strip
   base = fallback if base.empty?
@@ -561,31 +578,54 @@ def main(argv)
 
   FileUtils.mkdir_p(ENTRIES_DIR) unless options.dry_run
 
+  # Prefer the first feed hit (newest) for a given content_digest; skip later twin sends.
+  digest_owners = load_digest_owners
   changed = []
   skipped = 0
+  duplicates = 0
 
   remotes.each do |remote|
-    existing = load_entry(remote["id"])
-    if entry_up_to_date?(existing, remote, force: options.force)
-      skipped += 1
-      log("Skip ##{remote['id']} (up to date)")
+    id = remote["id"].to_i
+    digest = remote["content_digest"].to_s
+
+    if !digest.empty? && digest_owners.key?(digest) && digest_owners[digest] != id
+      duplicates += 1
+      log(
+        "Skip ##{id} (duplicate content_digest of ##{digest_owners[digest]} — " \
+        "#{remote['title']})"
+      )
       next
     end
 
-    log("#{options.dry_run ? 'Plan' : 'Sync'} ##{remote['id']} — #{remote['title']}")
+    existing = load_entry(id)
+    if entry_up_to_date?(existing, remote, force: options.force)
+      skipped += 1
+      log("Skip ##{id} (up to date)")
+      digest_owners[digest] = id unless digest.empty?
+      next
+    end
+
+    log("#{options.dry_run ? 'Plan' : 'Sync'} ##{id} — #{remote['title']}")
     entry = materialize_entry(remote, dry_run: options.dry_run, allowed_hosts: options.allowed_hosts)
     write_entry(entry) unless options.dry_run
     changed << entry
+    digest_owners[digest] = id unless digest.empty?
   end
 
   unless options.dry_run
     rebuild_index!(changed)
   end
 
-  if changed.empty?
-    log("No changes (#{skipped} up to date).")
+  parts = []
+  parts << "#{options.dry_run ? 'Would update' : 'Updated'} #{changed.size}" unless changed.empty?
+  parts << "#{skipped} up to date" if skipped.positive?
+  parts << "#{duplicates} duplicate content skipped" if duplicates.positive?
+  if parts.empty?
+    log("No changes.")
+  elsif changed.empty?
+    log("No changes (#{parts.join(', ')}).")
   else
-    log("#{options.dry_run ? 'Would update' : 'Updated'} #{changed.size} issue(s); skipped #{skipped}.")
+    log("#{parts.join('; ')}.")
   end
 end
 
