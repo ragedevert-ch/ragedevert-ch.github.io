@@ -159,9 +159,9 @@ description: Des légumes bio et locaux en paniers, cultivés par Rage de Vert �
     <div class="gallery-grid gallery-preview">
       <% homepage_gallery.each_with_index do |item, index| %>
         <% thumbnail = item.thumbnail || item.image %>
-        <figure>
+        <% link_to '/galerie/' do %>
           <%= gallery_image_tag thumbnail, item, alt: gallery_preview_alt(item, index), loading: 'lazy' %>
-        </figure>
+        <% end %>
       <% end %>
     </div>
 

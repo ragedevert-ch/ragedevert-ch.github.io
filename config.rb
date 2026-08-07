@@ -156,7 +156,7 @@ helpers do
       '@type' => 'Organization',
       'name' => site_title,
       'url' => site_url,
-      'email' => "mailto:#{site_email}",
+      'email' => site_email,
       'logo' => absolute_image_url('logo.webp'),
       'image' => meta_image_url,
       'sameAs' => social_urls,
