@@ -1,15 +1,5 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
-- id: 199
-  title: Gribouille du 5 août
-  published_at: '2026-08-04T14:37:14+02:00'
-  updated_at: '2026-08-07T17:06:02+02:00'
-  content_digest: db7741cda16e14676d9d2a6f589a9e297007d67aef33112089f11f70cb87737c
-  summary: Cette semaine au jardin de la main, l'association du jardin et votre Sacha
-    préféré vous proposera des délicieuses prunes à acheter si vous voulez faire un
-    clafoutis (ou toute autre miamerie), trop la chance !On en profite pour vous rappeler
-    que l'association vend aussi des sir...
-  entry: gribouille_entries/199.yml
 - id: 198
   title: Gribouille du 29 juillet
   published_at: '2026-07-28T17:16:35+02:00'
