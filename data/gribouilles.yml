@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 200
+  title: Gribouille du 12 août
+  published_at: '2026-08-11T13:57:37+02:00'
+  updated_at: '2026-08-11T13:57:37+02:00'
+  content_digest: 14dccda22549dd90557b7f9483f3a7c23dbb005357e7024d019546646756d564
+  summary: au secours!les légumes d'hiver risquent de se noyer dans les mauvaises
+    herbes... Inscrivez-vous pour des demi-journées pour les sauver! :))) oignon légumebasilicharicotet
+    l'equipe d'été:courgette (pâtisson, zapallito..)tomatesauberginepoivronconcombre
+    "Greendating"Est-ce la je...
+  entry: gribouille_entries/200.yml
 - id: 199
   title: Gribouille du 5 août
   published_at: '2026-08-04T14:37:14+02:00'
