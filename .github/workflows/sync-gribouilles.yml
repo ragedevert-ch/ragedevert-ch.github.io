@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: sync-gribouilles
@@ -33,13 +34,24 @@ jobs:
         run: ruby scripts/sync_gribouilles.rb
 
       - name: Commit and push if changed
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/gribouilles.yml data/gribouille_entries source/assets/images/gribouille source/s/gribouille
           if git diff --cached --quiet; then
             echo "No Gribouille changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git commit -m "Sync Gribouille newsletters from CSA Admin"
           git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # GITHUB_TOKEN pushes do not trigger other workflows. Dispatch deploy
+      # only when this run actually committed, and only from main.
+      - name: Trigger site deploy
+        if: steps.commit.outputs.changed == 'true' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run deploy.yml --ref main

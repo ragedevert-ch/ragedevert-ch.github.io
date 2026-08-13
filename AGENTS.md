@@ -24,7 +24,7 @@ Project-specific guidance for the Rage de Vert static site.
   - Local preview override: `GRIBOUILLE_FEED_URL=https://membres.ragedevert.test/newsletters.atom?template_id=9 ruby scripts/sync_gribouilles.rb`
   - Flags: `--dry-run`, `--force`, `--feed-url URL`
   - Writes `data/gribouilles.yml`, `data/gribouille_entries/*.yml`, images under `source/assets/images/gribouille/`, PDFs under `source/s/gribouille/`.
-  - Automated daily by `.github/workflows/sync-gribouilles.yml` (also `workflow_dispatch`).
+  - Automated daily by `.github/workflows/sync-gribouilles.yml` (also `workflow_dispatch`). A content commit then dispatches `deploy.yml`; a `GITHUB_TOKEN` push does not trigger it on its own.
 
 ## Prerequisites
 
