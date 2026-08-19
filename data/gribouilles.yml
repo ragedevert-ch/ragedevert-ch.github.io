@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 212
+  title: Gribouille du 19 août
+  published_at: '2026-08-18T14:55:34+02:00'
+  updated_at: '2026-08-18T14:55:34+02:00'
+  content_digest: ccc6d0ef8897c15ef2b08a1345c38218a8663704168099dbe7d62f8c1817ccc7
+  summary: Cette semaine, on vous a mis une surprise... Une courge spaghetti ! Quel.le.s
+    veinard.e.s ! On savait que vous aviez envie de courges... Plus sérieusement,
+    elles étaient prêtes 1,5 mois en avance et elles ont une maladie qui fait qu'elle
+    ne se conserveront pas (Pectobacterium ...
+  entry: gribouille_entries/212.yml
 - id: 200
   title: Gribouille du 12 août
   published_at: '2026-08-11T13:57:37+02:00'
