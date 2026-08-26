@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 213
+  title: Gribouille du 26 août
+  published_at: '2026-08-25T17:24:37+02:00'
+  updated_at: '2026-08-25T17:24:38+02:00'
+  content_digest: 3db44937d843802f08d3e91fb95ebbf48b080d043db580f1902ece31132d0a86
+  summary: 'Idée déconseillée : faire une fondue entre collègues à midi. En pleine
+    digestion, la reprise du dur labeur est difficile et mes yeux se fermmeowjfpiuefbioadkdnajnaowdnc.
+    oh pardon je me suis assoupi sur le clavier.. Je me concentre, il faut bien écrire
+    cette gribouille! Plus s...'
+  entry: gribouille_entries/213.yml
 - id: 212
   title: Gribouille du 19 août
   published_at: '2026-08-18T14:55:34+02:00'
