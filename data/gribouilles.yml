@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 214
+  title: Gribouille du 2 septembre
+  published_at: '2026-09-01T14:16:58+02:00'
+  updated_at: '2026-09-01T14:16:58+02:00'
+  content_digest: 10609ae852db014d6d470b347d3766ece77e4c8d5999119972408b37a02d326f
+  summary: Très Bonjour chèrex membres qui adorent faire la pub avec des autocollant
+    trop jolis :) laituebasilictomates (cerise)piment (pour certaines)concombre ou
+    courgette ou auberginepastèque ou melon ou betterave ou courge spaghetti (oui
+    on sait que c du bricolage :)) ...on commence ...
+  entry: gribouille_entries/214.yml
 - id: 213
   title: Gribouille du 26 août
   published_at: '2026-08-25T17:24:37+02:00'
