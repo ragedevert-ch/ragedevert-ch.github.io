@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 216
+  title: Gribouille du 9 septembre
+  published_at: '2026-09-08T14:06:44+02:00'
+  updated_at: '2026-09-08T14:06:44+02:00'
+  content_digest: ef5d247e9e2558dab7331d6a610ad086c9d4acb290b88fad4a63cf02ecce68c7
+  summary: Bonjour la punaise ! Bonjour l'autre punaise ! Bonjour l'autre autre punaise
+    ! Oh, bonjour les abonné.e.s, on vous avait pas vu derrière toutes les punaises
+    vertes !On espère que vous allez bien ! Nous ont fait des trucs d'automne, comme
+    vous aussi probablement, comme broyer l...
+  entry: gribouille_entries/216.yml
 - id: 214
   title: Gribouille du 2 septembre
   published_at: '2026-09-01T14:16:58+02:00'
