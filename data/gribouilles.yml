@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 218
+  title: Gribouille du 23 septembre
+  published_at: '2026-09-22T15:12:15+02:00'
+  updated_at: '2026-09-22T15:12:16+02:00'
+  content_digest: 48f715aa4dc4fc5854ceb45684d2761e2cc0734f4c0f91b42b9d109abcc0bddb
+  summary: 'à écouter en lisant la gribouille: positive wave de Radio Byzance (c''est
+    une musique pour garder la pêche) Pour vous accompagner dans la dégustation des
+    courges, voici une petite photo de famille pour vous aider à les reconnaître.
+    La blue ballet manquait à l''appel (elle était ...'
+  entry: gribouille_entries/218.yml
 - id: 217
   title: Gribouille du 16 septembre
   published_at: '2026-09-15T13:40:04+02:00'
