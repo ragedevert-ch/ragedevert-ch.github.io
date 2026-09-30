@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 219
+  title: Gribouille du 30 septembre
+  published_at: '2026-09-29T14:26:01+02:00'
+  updated_at: '2026-09-29T14:26:01+02:00'
+  content_digest: dddecc482e355f0bd361da6beaf7d7e6cead6c9491c20d07d7a84d7573060b56
+  summary: Décalage entre nos ressources et nos besoinsUn peu comme les cantons qui
+    tentent de boucler leurs budget, Rage de Vert doit trouver des solutions pour
+    son budget 2027 entre les besoins incompressibles de l'équipe maraîchère pour
+    ne pas tomber raide épuisée en cours d'année, et...
+  entry: gribouille_entries/219.yml
 - id: 218
   title: Gribouille du 23 septembre
   published_at: '2026-09-22T15:12:15+02:00'
