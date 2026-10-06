@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 220
+  title: Gribouille du 7 octobre
+  published_at: '2026-10-06T13:29:44+02:00'
+  updated_at: '2026-10-06T13:29:44+02:00'
+  content_digest: a49d2ce9d3eadee1dd8c5831943786a659538fd81792059051f8dfbe30c8ce15
+  summary: Si vous ne l'avez pas encore fait, n'oubliez pas de faire votre choix dans
+    le "Tour d'engagement" pour lequel vous avez reçu un message spécifique le 1er
+    octobre, portant le titre "Rage de Vert - Une belle histoire qui doit rebondir
+    (suite)" Vous recevrez un message concernant...
+  entry: gribouille_entries/220.yml
 - id: 219
   title: Gribouille du 30 septembre
   published_at: '2026-09-29T14:26:01+02:00'
