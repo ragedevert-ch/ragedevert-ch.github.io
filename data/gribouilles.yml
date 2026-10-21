@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 223
+  title: gribouille du 21 octobre
+  published_at: '2026-10-20T13:40:35+02:00'
+  updated_at: '2026-10-20T13:40:35+02:00'
+  content_digest: 0f6ff50b1289494edf7ee511129dfae7d8d4c7c621186b63cc8aa48e2765a7c1
+  summary: coucouuuuuuu, on vous a planté plein de doucette ! tomates ou tomates cerises&nbsp;choux
+    palmes ou catalogna&nbsp;courge&nbsp;mesclun&nbsp;épinards&nbsp;des petits radiiiis
+    Demain on dit au revoir aux tomates, c'est pourquoi vous aurez peut-être des pas
+    très mûres... mais lais...
+  entry: gribouille_entries/223.yml
 - id: 222
   title: Gribouille du 14 octobre
   published_at: '2026-10-13T12:44:45+02:00'
