@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 224
+  title: Gribouille du 28 octobre
+  published_at: '2026-10-27T14:13:48+01:00'
+  updated_at: '2026-10-27T14:13:48+01:00'
+  content_digest: db35c8a968938b73c516f0c4054f5f0d85b5bc63554e01c8b50c9bab12aa6550
+  summary: L'équipe maraichère a déjà exprimé ses "Hourra" et "Merci" dans la Gribouille
+    du 21 octobre. Le "Tour d'engagement" destiné à sauver notre budget 2027 a rudement
+    bien fonctionné grâce à vous. Un tout grand merci.Vous avez dû recevoir un mail
+    automatique vous remerciant personn...
+  entry: gribouille_entries/224.yml
 - id: 223
   title: gribouille du 21 octobre
   published_at: '2026-10-20T13:40:35+02:00'
