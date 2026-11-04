@@ -57,10 +57,33 @@ ALLOWED_IMAGE_TYPES = %w[
   image/gif
 ].freeze
 ALLOWED_IMAGE_EXTENSIONS = %w[.jpg .jpeg .png .webp .gif].freeze
+# Office and text documents members actually attach. Keep this closed:
+# HTML/SVG/zip/executables stay out even if the feed sends them.
 ALLOWED_ATTACHMENT_TYPES = %w[
   application/pdf
+  application/msword
+  application/vnd.openxmlformats-officedocument.wordprocessingml.document
+  application/vnd.oasis.opendocument.text
+  application/rtf
+  text/rtf
+  application/vnd.ms-excel
+  application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+  application/vnd.oasis.opendocument.spreadsheet
+  text/csv
+  application/vnd.ms-powerpoint
+  application/vnd.openxmlformats-officedocument.presentationml.presentation
+  application/vnd.oasis.opendocument.presentation
+  text/plain
 ].freeze
-ALLOWED_ATTACHMENT_EXTENSIONS = %w[.pdf].freeze
+ALLOWED_ATTACHMENT_EXTENSIONS = %w[
+  .pdf .doc .docx .odt .rtf .xls .xlsx .ods .csv .ppt .pptx .odp .txt
+].freeze
+# Active Storage sometimes serves a known document as a generic type.
+GENERIC_DOWNLOAD_TYPES = %w[
+  application/octet-stream
+  binary/octet-stream
+  application/x-download
+].freeze
 MAX_DOWNLOAD_BYTES = 25 * 1024 * 1024
 
 class SyncError < StandardError; end
@@ -294,12 +317,24 @@ def extension_for(content_type, filename)
   ext = File.extname(filename).downcase
   return ext unless ext.empty?
 
-  case content_type.to_s.downcase
+  case media_type(content_type)
   when %r{\Aimage/jpeg} then ".jpg"
   when %r{\Aimage/png} then ".png"
   when %r{\Aimage/webp} then ".webp"
   when %r{\Aimage/gif} then ".gif"
-  when %r{\Aapplication/pdf} then ".pdf"
+  when "application/pdf" then ".pdf"
+  when "application/msword" then ".doc"
+  when "application/vnd.openxmlformats-officedocument.wordprocessingml.document" then ".docx"
+  when "application/vnd.oasis.opendocument.text" then ".odt"
+  when "application/rtf", "text/rtf" then ".rtf"
+  when "application/vnd.ms-excel" then ".xls"
+  when "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" then ".xlsx"
+  when "application/vnd.oasis.opendocument.spreadsheet" then ".ods"
+  when "text/csv" then ".csv"
+  when "application/vnd.ms-powerpoint" then ".ppt"
+  when "application/vnd.openxmlformats-officedocument.presentationml.presentation" then ".pptx"
+  when "application/vnd.oasis.opendocument.presentation" then ".odp"
+  when "text/plain" then ".txt"
   else
     ""
   end
@@ -381,17 +416,49 @@ def assert_image_type!(content_type, filename)
   raise SyncError, "Unsupported image type #{type.inspect} (#{filename})"
 end
 
-def assert_attachment_type!(content_type, filename, declared_type: nil)
+def generic_download_type?(content_type)
+  type = media_type(content_type)
+  type.empty? || GENERIC_DOWNLOAD_TYPES.include?(type)
+end
+
+# Prefer the Atom enclosure type when the download itself is generic.
+def resolved_attachment_type(content_type, declared_type)
   type = media_type(content_type)
   declared = media_type(declared_type)
+  return declared if generic_download_type?(type) && !declared.empty?
+
+  type
+end
+
+def attachment_allowed?(content_type, filename, declared_type: nil)
+  type = resolved_attachment_type(content_type, declared_type)
   ext = File.extname(filename.to_s).downcase
-  type = declared if type.empty? && !declared.empty?
+  return true if ALLOWED_ATTACHMENT_TYPES.include?(type)
+  return true if generic_download_type?(type) && ALLOWED_ATTACHMENT_EXTENSIONS.include?(ext)
 
-  allowed_type = ALLOWED_ATTACHMENT_TYPES.include?(type)
-  allowed_ext = ALLOWED_ATTACHMENT_EXTENSIONS.include?(ext)
-  return if allowed_type || (type.empty? && allowed_ext)
+  false
+end
 
-  raise SyncError, "Unsupported attachment type #{type.inspect} (#{filename})"
+def stored_attachment_type(content_type, filename, declared_type:)
+  type = resolved_attachment_type(content_type, declared_type)
+  return type unless generic_download_type?(type)
+
+  ext = File.extname(filename.to_s).downcase
+  {
+    ".pdf" => "application/pdf",
+    ".doc" => "application/msword",
+    ".docx" => "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".odt" => "application/vnd.oasis.opendocument.text",
+    ".rtf" => "application/rtf",
+    ".xls" => "application/vnd.ms-excel",
+    ".xlsx" => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".ods" => "application/vnd.oasis.opendocument.spreadsheet",
+    ".csv" => "text/csv",
+    ".ppt" => "application/vnd.ms-powerpoint",
+    ".pptx" => "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ".odp" => "application/vnd.oasis.opendocument.presentation",
+    ".txt" => "text/plain"
+  }.fetch(ext, "")
 end
 
 def download_binary(url, allowed_hosts:)
@@ -462,15 +529,29 @@ def materialize_entry(remote, dry_run:, allowed_hosts:)
     downloaded = download_binary(href, allowed_hosts: allowed_hosts)
     original_name = enclosure["title"].to_s
     original_name = File.basename(URI.parse(href).path.to_s) if original_name.empty?
-    assert_attachment_type!(downloaded[:content_type], original_name, declared_type: enclosure["type"])
-    ext = extension_for(downloaded[:content_type], original_name)
+    unless attachment_allowed?(downloaded[:content_type], original_name, declared_type: enclosure["type"])
+      # One unexpected file must not abort the daily sync of every other issue.
+      log(
+        "Skip attachment in ##{id}: unsupported type " \
+        "#{resolved_attachment_type(downloaded[:content_type], enclosure['type']).inspect} " \
+        "(#{original_name})"
+      )
+      next
+    end
+
+    ext = extension_for(
+      resolved_attachment_type(downloaded[:content_type], enclosure["type"]),
+      original_name
+    )
     desired = sanitize_filename(original_name, fallback: "piece-jointe-#{index + 1}#{ext}")
     desired = "#{desired}#{ext}" if File.extname(desired).empty? && !ext.empty?
     filename = unique_name(used_doc_names, desired)
     public_path = "/s/gribouille/#{id}/#{filename}"
-    stored_type = media_type(enclosure["type"])
-    stored_type = media_type(downloaded[:content_type]) if stored_type.empty?
-    stored_type = "application/pdf" if stored_type.empty?
+    stored_type = stored_attachment_type(
+      downloaded[:content_type],
+      original_name,
+      declared_type: enclosure["type"]
+    )
 
     attachments << {
       "title" => enclosure["title"].to_s.empty? ? filename : enclosure["title"],

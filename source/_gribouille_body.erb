@@ -11,7 +11,8 @@
         <li>
           <%= link_to attachment.title, attachment.path, class: 'gribouille-attachment-link' %>
           <% meta = [] %>
-          <% meta << 'PDF' if attachment.type.to_s.include?('pdf') %>
+          <% label = gribouille_attachment_label(attachment) %>
+          <% meta << label if label %>
           <% size_label = gribouille_file_size(attachment.bytes) %>
           <% meta << size_label if size_label %>
           <% if meta.any? %>

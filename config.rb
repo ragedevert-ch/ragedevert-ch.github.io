@@ -360,6 +360,17 @@ helpers do
     "#{kb} Ko"
   end
 
+  def gribouille_attachment_label(attachment)
+    type = (attachment.respond_to?(:type) ? attachment.type : attachment['type']).to_s.downcase
+    return 'PDF' if type.include?('pdf')
+    return 'Word' if type.include?('wordprocessingml') || type.include?('msword') || type.include?('opendocument.text') || type.include?('rtf')
+    return 'Excel' if type.include?('spreadsheet') || type.include?('ms-excel') || type == 'text/csv'
+    return 'PowerPoint' if type.include?('presentation') || type.include?('ms-powerpoint')
+    return 'TXT' if type == 'text/plain'
+
+    nil
+  end
+
   def gribouille_meta_description(entry)
     summary = entry.respond_to?(:summary) ? entry.summary : entry['summary']
     text = summary.to_s
