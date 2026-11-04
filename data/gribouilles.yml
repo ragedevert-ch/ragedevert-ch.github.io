@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 225
+  title: Gribouille du 4 novembre
+  published_at: '2026-11-03T14:00:47+01:00'
+  updated_at: '2026-11-03T14:00:47+01:00'
+  content_digest: d87d9b144dc01a1d86e6d18c16ec9a39f2ac9d7dfaa48dfd993b9c6a460093fa
+  summary: Ciao on a commencé le plan de culture 2027. Qu'est-ce qu'on veut changer
+    ? Quelle nouvelle variété tester ? Qui, de Kata ou Kara(koi) est le/la plus investi.e
+    dans le plan de culture ? Pendant les pauses on a beaucoup rigolé devant des vidéos
+    de chat "funny cat, impossible not...
+  entry: gribouille_entries/225.yml
 - id: 224
   title: Gribouille du 28 octobre
   published_at: '2026-10-27T14:13:48+01:00'
