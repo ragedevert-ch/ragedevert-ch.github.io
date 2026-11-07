@@ -1,0 +1,22 @@
+(function () {
+  var params = new URLSearchParams(location.search);
+  if (!params.has("ref")) return;
+
+  var ref = (params.get("ref") || "").trim();
+  if (/^[A-Za-z0-9._-]{1,64}$/.test(ref)) {
+    var host = location.hostname;
+    var domain = host === "ragedevert.ch" || host.slice(-14) === ".ragedevert.ch"
+      ? "; Domain=.ragedevert.ch"
+      : "";
+    var secure = location.protocol === "https:" ? "; Secure" : "";
+
+    document.cookie = "ref=" + encodeURIComponent(ref)
+      + "; Path=/; Max-Age=<%= referral_cookie_max_age %>; SameSite=Lax"
+      + domain
+      + secure;
+  }
+
+  params.delete("ref");
+  var search = params.toString();
+  location.replace(location.pathname + (search ? "?" + search : "") + location.hash);
+})();

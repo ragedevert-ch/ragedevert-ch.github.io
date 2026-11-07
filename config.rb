@@ -51,6 +51,7 @@ set :site_url, 'https://www.ragedevert.ch'
 set :site_email, 'info@ragedevert.ch'
 set :signup_url, 'https://membres.ragedevert.ch/new'
 set :members_url, 'https://membres.ragedevert.ch/login'
+set :referral_cookie_days, 90
 set :instagram_url, 'https://www.instagram.com/ragedevert'
 set :facebook_url, 'https://www.facebook.com/ragedevert.ch'
 set :linkedin_url, 'https://www.linkedin.com/company/association-rage-de-vert'
@@ -79,6 +80,10 @@ helpers do
 
   def members_url
     config[:members_url]
+  end
+
+  def referral_cookie_max_age
+    config[:referral_cookie_days].to_i * 24 * 60 * 60
   end
 
   def admin_url
