@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 226
+  title: Gribouille du 10 novembre
+  published_at: '2026-11-10T15:49:20+01:00'
+  updated_at: '2026-11-10T15:49:21+01:00'
+  content_digest: 91c4d31eac5802553e258384f2bc2cc80d72edff126a5f01d1e47157cc52dfee
+  summary: Kata a des nouvelles lunettes, quelle classe ! peut être que vous aussi
+    vous aurez des betteraves chioggia dans votre panier cette semaines, qui sait
+    ?On a encore des places pour des demi-journées ces deux prochaines semaines !
+    Inscrivez vous pour venir profiter du brouillard ...
+  entry: gribouille_entries/226.yml
 - id: 225
   title: Gribouille du 4 novembre
   published_at: '2026-11-03T14:00:47+01:00'
