@@ -1,5 +1,15 @@
 # Synced from CSA Admin Atom feed — do not hand-edit
 ---
+- id: 227
+  title: Gribouille du 18 novembre 2026
+  published_at: '2026-11-17T12:51:54+01:00'
+  updated_at: '2026-11-17T12:51:54+01:00'
+  content_digest: f005653d455f0ed3ba97e8f941bd5cce54ac67c41e9eab24bea9a61e04478a3b
+  summary: "&quot;une journée pluvieuse ne peut rien contre un tempérament radieux&quot;Mais
+    que peut un tempérament radieux contre une SEMAINE pluvieuse ????????Ce qui pourrait
+    sauver une semaine pluvieuse? Le retour de nombreux sacs ! On en a très peu, on
+    compte sur vous pour nous en ra..."
+  entry: gribouille_entries/227.yml
 - id: 226
   title: Gribouille du 10 novembre
   published_at: '2026-11-10T15:49:20+01:00'
