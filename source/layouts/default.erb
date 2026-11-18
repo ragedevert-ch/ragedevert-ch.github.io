@@ -60,7 +60,7 @@
           <% end %>
         </nav>
 
-        <%= link_to 'Inscrivez-vous', signup_url, class: 'button header-signup' %>
+        <%= action_link_to 'Inscrivez-vous', signup_url, 'signup', class: 'button header-signup', 'data-umami-event-place': 'header' %>
 
         <button class="mobile-menu-button" type="button" aria-haspopup="dialog" aria-controls="mobile-menu" aria-expanded="false" data-menu-open>
           <span class="menu-icon" aria-hidden="true"></span>
@@ -81,7 +81,7 @@
           </nav>
 
           <div class="mobile-menu-actions">
-            <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+            <%= action_link_to 'Inscrivez-vous', signup_url, 'signup', class: 'button', 'data-umami-event-place': 'menu' %>
           </div>
         </div>
       </dialog>
@@ -129,8 +129,8 @@
           <div>
             <h2>Participer</h2>
             <ul class="footer-links">
-              <li><%= link_to 'Inscription', signup_url %></li>
-              <li><%= link_to 'Espace membre', members_url %></li>
+              <li><%= action_link_to 'Inscription', signup_url, 'signup', 'data-umami-event-place': 'footer' %></li>
+              <li><%= action_link_to 'Espace membre', members_url, 'members', 'data-umami-event-place': 'footer' %></li>
               <li><%= link_to 'La Gribouille', '/gribouille/' %></li>
               <li><%= link_to 'Flyer à partager', '/s/ragdevert-flyer.pdf' %></li>
               <li><%= link_to 'Calendrier des livraisons', '/s/ragdevert-calendrier-livraisons-2026.pdf' %></li>

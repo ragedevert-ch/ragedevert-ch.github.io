@@ -9,7 +9,7 @@ description: Tailles, tarifs, distribution et fonctionnement des paniers de lég
     <h1>Les paniers de légumes</h1>
     <p>Rage de Vert propose trois tailles de paniers bio, locaux et de saison. L’abonnement annuel donne droit à 42 paniers par année, avec les 4 premiers paniers à l’essai sans engagement.</p>
     <div class="button-row">
-      <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+      <%= action_link_to 'Inscrivez-vous', signup_url, 'signup', class: 'button', 'data-umami-event-place': 'header' %>
       <%= link_to 'Voir les tailles et tarifs', '#tarifs', class: 'button-secondary' %>
     </div>
   </div>
@@ -130,7 +130,7 @@ description: Tailles, tarifs, distribution et fonctionnement des paniers de lég
       <ul class="takeaway-list depot-summary-list">
         <li><strong>Panier préparé:</strong> supplément de 3 à 4 CHF par panier selon le dépôt.</li>
         <li><strong>Horaires:</strong> disponibles le mercredi dès 13h (Jardin de la Main et Cormondrèche dès 15h), à retirer au plus tard le jeudi soir.</li>
-        <li><%= link_to 'Voir les dépôts, adresses et suppléments à jour dans le formulaire', signup_url %></li>
+        <li><%= action_link_to 'Voir les dépôts, adresses et suppléments à jour dans le formulaire', signup_url, 'signup', 'data-umami-event-place': 'depots' %></li>
       </ul>
     </div>
   </div>
@@ -193,7 +193,7 @@ description: Tailles, tarifs, distribution et fonctionnement des paniers de lég
     <p class="paniers-reglement-note">Le détail des règles figure dans le <%= link_to 'règlement de l’association', '/s/ragdevert-reglement.pdf' %>.</p>
 
     <div class="button-row paniers-final-cta">
-      <%= link_to 'Remplir le formulaire d’inscription', signup_url, class: 'button' %>
+      <%= action_link_to 'Remplir le formulaire d’inscription', signup_url, 'signup', class: 'button', 'data-umami-event-place': 'final' %>
     </div>
   </div>
 </section>

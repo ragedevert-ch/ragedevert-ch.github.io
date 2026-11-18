@@ -84,6 +84,11 @@ helpers do
     config[:members_url]
   end
 
+  def action_link_to(label, url, event, **html_options)
+    html_options[:'data-umami-event'] = event
+    link_to label, url, html_options
+  end
+
   def referral_cookie_max_age
     config[:referral_cookie_days].to_i * 24 * 60 * 60
   end

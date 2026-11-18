@@ -17,7 +17,7 @@ description: Coordonnées, adresses, accès aux champs et documents de l’assoc
       <div class="section-header contact-header">
         <p class="eyebrow">Nous écrire</p>
         <h2>Le plus simple: un message</h2>
-        <p>Pour s’abonner, le plus rapide est de <%= link_to 'remplir le formulaire d’inscription', signup_url %>. Pour une question avant de vous décider, écrivez‑nous.</p>
+        <p>Pour s’abonner, le plus rapide est de <%= action_link_to 'remplir le formulaire d’inscription', signup_url, 'signup', 'data-umami-event-place': 'intro' %>. Pour une question avant de vous décider, écrivez‑nous.</p>
       </div>
 
       <ul class="contact-list contact-methods">

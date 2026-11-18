@@ -1,4 +1,14 @@
 (function () {
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("[data-umami-event]");
+    if (!link) return;
+
+    var match = document.cookie.match(/(?:^|; )ref=([^;]*)/);
+    if (!match) return;
+
+    link.setAttribute("data-umami-event-ref", decodeURIComponent(match[1]));
+  }, true);
+
   document.addEventListener("DOMContentLoaded", function () {
     var dialog = document.getElementById("mobile-menu");
     var openButton = document.querySelector("[data-menu-open]");

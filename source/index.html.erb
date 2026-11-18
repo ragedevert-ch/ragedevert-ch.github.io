@@ -14,7 +14,7 @@ description: Des légumes bio et locaux en paniers, cultivés par Rage de Vert �
       <h1>Paniers de légumes bio, locaux et de saison</h1>
       <p class="hero-lead">Rage de Vert <%= link_to 'cultive des légumes à Thielle-Wavre', '/culture/' %> et les distribue chaque semaine à Neuchâtel, La Chaux-de-Fonds et dans plusieurs <%= link_to 'points de dépôt à travers le canton', '/paniers/#distribution' %>. En vous abonnant, vous soutenez une association locale et participez concrètement à la vie des champs.</p>
       <div class="button-row">
-        <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+        <%= action_link_to 'Inscrivez-vous', signup_url, 'signup', class: 'button', 'data-umami-event-place': 'hero' %>
         <%= link_to 'Découvrir les paniers', '/paniers/', class: 'button-secondary' %>
       </div>
     </div>
@@ -37,7 +37,7 @@ description: Des légumes bio et locaux en paniers, cultivés par Rage de Vert �
       </div>
 
       <div class="button-row">
-        <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+        <%= action_link_to 'Inscrivez-vous', signup_url, 'signup', class: 'button', 'data-umami-event-place': 'abonnements' %>
         <%= link_to 'Voir les tailles et tarifs', '/paniers/#tarifs', class: 'button-secondary' %>
       </div>
     </div>

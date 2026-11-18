@@ -105,7 +105,7 @@ description: "Le beurre dans les épinards: transparence sur le budget, les char
       <p>Lors de l’inscription, vous pouvez choisir le tarif de base ou ajouter un supplément volontaire au prix de votre panier. Cette option rend visible le lien entre le prix de l’abonnement et le revenu de l’équipe maraîchère.</p>
       <p>Les montants ci-dessous indiquent l’effet sur une année de 42 paniers.</p>
       <div class="button-row">
-        <%= link_to 'Inscrivez-vous', signup_url, class: 'button' %>
+        <%= action_link_to 'Inscrivez-vous', signup_url, 'signup', class: 'button', 'data-umami-event-place': 'supplement' %>
         <%= link_to 'Voir les tarifs des paniers', '/paniers/#tarifs', class: 'button-secondary' %>
       </div>
     </div>
