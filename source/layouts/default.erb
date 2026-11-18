@@ -145,6 +145,10 @@
       <%= partial 'page_header_vegetable' %>
     <% end %>
 
+    <% if umami_enabled? %>
+      <script defer src="<%= umami_script_url %>" data-website-id="<%= umami_website_id %>" onload="window.trackReferral && trackReferral()"></script>
+    <% end %>
+
     <% if cloudflare_web_analytics_enabled? %>
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='<%= cloudflare_web_analytics_config %>'></script>
     <% end %>

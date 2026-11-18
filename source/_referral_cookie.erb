@@ -3,7 +3,9 @@
   if (!params.has("ref")) return;
 
   var ref = (params.get("ref") || "").trim();
-  if (/^[A-Za-z0-9._-]{1,64}$/.test(ref)) {
+  var valid = /^[A-Za-z0-9._-]{1,64}$/.test(ref);
+
+  if (valid) {
     var host = location.hostname;
     var domain = host === "ragedevert.ch" || host.slice(-14) === ".ragedevert.ch"
       ? "; Domain=.ragedevert.ch"
@@ -18,5 +20,16 @@
 
   params.delete("ref");
   var search = params.toString();
-  location.replace(location.pathname + (search ? "?" + search : "") + location.hash);
+  history.replaceState(null, "", location.pathname + (search ? "?" + search : "") + location.hash);
+
+  <% if umami_enabled? %>
+    if (!valid) return;
+
+    window.trackReferral = function () {
+      if (!window.umami) return;
+
+      window.umami.identify({ ref: ref });
+      window.umami.track("referral", { ref: ref });
+    };
+  <% end %>
 })();

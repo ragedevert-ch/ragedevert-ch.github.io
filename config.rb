@@ -56,6 +56,8 @@ set :instagram_url, 'https://www.instagram.com/ragedevert'
 set :facebook_url, 'https://www.facebook.com/ragedevert.ch'
 set :linkedin_url, 'https://www.linkedin.com/company/association-rage-de-vert'
 set :cloudflare_web_analytics_token, '688c3e4307cf41be893977dbc9d38c02'
+set :umami_script_url, 'https://cloud.umami.is/script.js'
+set :umami_website_id, 'df1b2130-6aed-4f5e-973b-cf235c5bfb9e'
 
 helpers do
   def site_title
@@ -150,6 +152,18 @@ helpers do
 
   def cloudflare_web_analytics_config
     JSON.generate(token: config[:cloudflare_web_analytics_token])
+  end
+
+  def umami_enabled?
+    build? && config[:umami_website_id].to_s.strip != ''
+  end
+
+  def umami_script_url
+    config[:umami_script_url]
+  end
+
+  def umami_website_id
+    config[:umami_website_id]
   end
 
   def page_title
